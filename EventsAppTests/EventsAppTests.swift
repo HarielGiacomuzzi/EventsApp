@@ -10,25 +10,43 @@ import XCTest
 @testable import EventsApp
 
 class EventsAppTests: XCTestCase {
+    var eventsProvider: EventsProviderProtocol!
+    var eventsService: EventsServiceProtocol!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        self.eventsProvider = EventsProvider()
+        self.eventsService = EventsService(provider: self.eventsProvider)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        self.eventsProvider = nil
+        self.eventsService = nil
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    func testFetchEvents() {
+        let waitForFetch = expectation(description: "Need to wait until fetch completed")
+        waitForFetch.expectedFulfillmentCount = 1
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        self.eventsProvider.fetchEvents {data in
+            XCTAssertFalse(data.isEmpty)
+            waitForFetch.fulfill()
         }
+
+        wait(for: [waitForFetch], timeout: 10.0)
+    }
+
+    func testSendCheckinEvent() {
+        let waitForCheckin = expectation(description: "Need to wait until checking is done")
+        waitForCheckin.expectedFulfillmentCount = 1
+
+        self.eventsProvider.checkinInEvent(eventId: 1,
+                                           personName: "John Doe",
+                                           personEmail: "a@b.com") {result in
+            XCTAssertTrue(result)
+            waitForCheckin.fulfill()
+        }
+
+        wait(for: [waitForCheckin], timeout: 10.0)
     }
 
 }

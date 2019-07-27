@@ -12,8 +12,8 @@ import ImageLoader
 
 private struct K {
     static let CardTopSpacing = CGFloat(15.0)
-    static let CardLeftSpacing = CGFloat(10.0)
-    static let CardWidth = UIScreen.main.bounds.width - CardLeftSpacing*2
+    static let CardBorderSpacing = CGFloat(15.0)
+    static let CardWidth = UIScreen.main.bounds.width - CardBorderSpacing*2
     static let CardHeight = CGFloat(280.0)
 }
 
@@ -30,7 +30,7 @@ class EventsViewController: UIViewController {
         self.viewModel?.getEvents()
 
         self.defaultDateFormat = DateFormatter()
-        self.defaultDateFormat.dateFormat = "dd MMM, yyyy"
+        self.defaultDateFormat.dateFormat = "dd MMM"
     }
 
     private func configureCardView(imageURL: String, frame: CGRect, event: Event) {
@@ -44,7 +44,7 @@ class EventsViewController: UIViewController {
         card.itemTitle = "Quando: \(defaultDateFormat.string(from: event.date ?? Date()))"
         card.itemSubtitle = "Preço: \(event.price ?? 0.0)"
         card.textColor = UIColor.black
-        card.buttonText = "Fazer check-in"
+        card.buttonText = "Compartilhar"
         card.hasParallax = true
 
         let cardContentVC = storyboard!.instantiateViewController(
@@ -79,12 +79,12 @@ extension EventsViewController: EventsViewModelDelegate {
         var totalHight = K.CardTopSpacing
 
         guard let viewModel = self.viewModel else { return }
-        for index in 0...viewModel.getNumberOfRows() - 1 {
+        for index in 0...viewModel.getNumberOfRows() {
             if let event = self.viewModel?.getRowData(for: index),
                let imageURL = event.image {
 
                 let frame = CGRect(
-                    x: K.CardLeftSpacing,
+                    x: K.CardBorderSpacing,
                     y: totalHight,
                     width: K.CardWidth,
                     height: K.CardHeight
@@ -97,4 +97,12 @@ extension EventsViewController: EventsViewModelDelegate {
         }
         self.scrollVIew.contentSize.height = totalHight + K.CardTopSpacing
     }
+}
+
+extension EventsViewController: CardDelegate {
+
+    func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
+        card.buttonText = "Fazer check-in"
+    }
+
 }

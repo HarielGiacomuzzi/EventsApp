@@ -12,24 +12,31 @@ import Alamofire
 protocol EventsProviderProtocol {
 
     func fetchEvents(completion: @escaping (Data) -> Void)
-    func checkinInEvent(event: Event, person: Person, completion: @escaping (_ result: Bool) -> Void)
+    func checkinInEvent(eventId: Int,
+                        personName: String,
+                        personEmail: String,
+                        completion: @escaping (Bool) -> Void)
 }
 
 class EventsProvider: EventsProviderProtocol {
 
-    func checkinInEvent(event: Event, person: Person, completion: @escaping (Bool) -> Void) {
+    func checkinInEvent(eventId: Int,
+                        personName: String,
+                        personEmail: String,
+                        completion: @escaping (Bool) -> Void) {
 
         let parameters: [String: Any] = [
-            "eventId": event.id ?? "",
-            "name": person.name ?? "",
-            "email": person.email ?? ""
+            "eventId": eventId,
+            "name": personName,
+            "email": personEmail
         ]
 
         Alamofire.request("\(Server.Production)\(Routes.Checkin)",
                           method: .post,
                           parameters: parameters,
                           encoding: JSONEncoding.default).response { response in
-                            if response.response?.statusCode == 200 {
+                            if response.response?.statusCode == 200 ||
+                                response.response?.statusCode == 201 {
                                 completion(true)
                             } else {
                                 completion(false)

@@ -34,7 +34,7 @@ class EventsViewModel {
     }
 
     func getNumberOfRows() -> Int {
-        return self.events.count
+        return self.events.count - 1
     }
 
     func getRowData(for index: Int) -> Event {

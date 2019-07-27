@@ -20,6 +20,14 @@ class EventsAppUITests: XCTestCase {
     }
 
     func testExample() {
+        let app = XCUIApplication()
+        app.launch()
+
+        let event = app.scrollViews.otherElements.staticTexts["DOAÇÃO DE ROUPAS"]
+        let exists = NSPredicate(format: "exists == 1")
+
+        expectation(for: exists, evaluatedWith: event, handler: nil)
+        waitForExpectations(timeout: 20.0, handler: nil)
     }
 
 }

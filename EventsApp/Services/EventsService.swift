@@ -11,7 +11,10 @@ import Foundation
 protocol EventsServiceProtocol {
 
     func getEvents(completion: @escaping ([Event]) -> Void)
-    func checkinPerson(event: Event, person: Person, completion: @escaping (Bool) -> Void)
+    func checkinPerson(eventId: Int,
+                       personName: String,
+                       personEmail: String,
+                       completion: @escaping (Bool) -> Void)
 }
 
 class EventsService: EventsServiceProtocol {
@@ -27,17 +30,25 @@ class EventsService: EventsServiceProtocol {
             if let decodedEvents = try? JSONDecoder().decode(
                     [Event].self, from: data
                 ) {
-                completion(decodedEvents)
+                let sortedEvents = decodedEvents.sorted { lhs, rhs in
+                    guard let firstDate = lhs.date,
+                        let secondDate = rhs.date else { return false }
+                    return firstDate > secondDate
+                }
+                completion(sortedEvents)
             }
             completion([])
         }
     }
 
-    func checkinPerson(event: Event, person: Person, completion: @escaping (Bool) -> Void) {
-        self.provider?.checkinInEvent(
-                event: event,
-                person: person,
-                completion: completion
-        )
+    func checkinPerson(eventId: Int,
+                       personName: String,
+                       personEmail: String,
+                       completion: @escaping (Bool) -> Void) {
+
+        self.provider?.checkinInEvent(eventId: eventId,
+                                      personName: personName,
+                                      personEmail: personEmail,
+                                      completion: completion)
     }
 }
