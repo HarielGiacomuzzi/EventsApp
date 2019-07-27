@@ -8,6 +8,8 @@ target 'EventsApp' do
   # Pods for EventsApp
   pod 'Alamofire', '4.8.2'
   pod 'SwiftLint', '~> 0.33'
+  pod 'Cards', '~> 1.4'
+  pod 'ImageLoader', '~> 0.15'
 
   target 'EventsAppTests' do
     inherit! :search_paths

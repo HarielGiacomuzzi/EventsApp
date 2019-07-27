@@ -19,6 +19,9 @@
 		DB36B2B722ECB06C0088EEA5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB36B2B622ECB06C0088EEA5 /* Default-568h@2x.png */; };
 		DB36B2B922ECB6EB0088EEA5 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2B822ECB6EB0088EEA5 /* EventsService.swift */; };
 		DB36B2BC22ECB8C00088EEA5 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2BB22ECB8C00088EEA5 /* EventsViewModel.swift */; };
+		DB36B2BF22ECC1E60088EEA5 /* EventCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB36B2BE22ECC1E60088EEA5 /* EventCard.xib */; };
+		DB36B2C122ECD6560088EEA5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2C022ECD6560088EEA5 /* DetailViewController.swift */; };
+		DB36B2C322ECDA770088EEA5 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2C222ECDA770088EEA5 /* DetailViewModel.swift */; };
 		DB6BA0E822ECA62D0020C2EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BA0E722ECA62D0020C2EB /* AppDelegate.swift */; };
 		DB6BA0EA22ECA62D0020C2EB /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BA0E922ECA62D0020C2EB /* EventsViewController.swift */; };
 		DB6BA0EF22ECA62F0020C2EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB6BA0EE22ECA62F0020C2EB /* Assets.xcassets */; };
@@ -63,6 +66,9 @@
 		DB36B2B622ECB06C0088EEA5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DB36B2B822ECB6EB0088EEA5 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		DB36B2BB22ECB8C00088EEA5 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
+		DB36B2BE22ECC1E60088EEA5 /* EventCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCard.xib; sourceTree = "<group>"; };
+		DB36B2C022ECD6560088EEA5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DB36B2C222ECDA770088EEA5 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		DB6BA0E422ECA62D0020C2EB /* EventsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB6BA0E722ECA62D0020C2EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB6BA0E922ECA62D0020C2EB /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				DB36B2BB22ECB8C00088EEA5 /* EventsViewModel.swift */,
+				DB36B2C222ECDA770088EEA5 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -172,6 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				DB6BA0E922ECA62D0020C2EB /* EventsViewController.swift */,
+				DB36B2BE22ECC1E60088EEA5 /* EventCard.xib */,
+				DB36B2C022ECD6560088EEA5 /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -358,6 +367,7 @@
 				DB36B2B722ECB06C0088EEA5 /* Default-568h@2x.png in Resources */,
 				DB6BA11722ECA9840020C2EB /* LaunchScreen.storyboard in Resources */,
 				DB6BA0EF22ECA62F0020C2EB /* Assets.xcassets in Resources */,
+				DB36B2BF22ECC1E60088EEA5 /* EventCard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +502,9 @@
 				DB36B2B922ECB6EB0088EEA5 /* EventsService.swift in Sources */,
 				DB36B2AD22ECAD070088EEA5 /* Servers.swift in Sources */,
 				DB36B2BC22ECB8C00088EEA5 /* EventsViewModel.swift in Sources */,
+				DB36B2C122ECD6560088EEA5 /* DetailViewController.swift in Sources */,
 				DB36B2AA22ECAB1B0088EEA5 /* EventsProvider.swift in Sources */,
+				DB36B2C322ECDA770088EEA5 /* DetailViewModel.swift in Sources */,
 				DB36B2B122ECAE430088EEA5 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
