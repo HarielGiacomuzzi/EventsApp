@@ -17,6 +17,11 @@ private struct K {
     static let CardHeight = CGFloat(280.0)
 }
 
+private enum CardAction: String {
+    case fazerCheckin = "Fazer check-in"
+    case compartilhar = "Compartilhar"
+}
+
 class EventsViewController: UIViewController {
     @IBOutlet var scrollVIew: UIScrollView!
 
@@ -44,8 +49,10 @@ class EventsViewController: UIViewController {
         card.itemTitle = "Quando: \(defaultDateFormat.string(from: event.date ?? Date()))"
         card.itemSubtitle = "Preço: \(event.price ?? 0.0)"
         card.textColor = UIColor.black
-        card.buttonText = "Compartilhar"
+        card.buttonText = CardAction.compartilhar.rawValue
+        card.backgroundImage = #imageLiteral(resourceName: "placeHolder")
         card.hasParallax = true
+        card.delegate = self
 
         let cardContentVC = storyboard!.instantiateViewController(
             withIdentifier: "CardContent"
@@ -102,7 +109,24 @@ extension EventsViewController: EventsViewModelDelegate {
 extension EventsViewController: CardDelegate {
 
     func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
-        card.buttonText = "Fazer check-in"
+        switch card.buttonText {
+        case CardAction.fazerCheckin.rawValue:
+            debugPrint("Do Checking")
+        default:
+            debugPrint("Compartilhar")
+        }
+    }
+
+    func cardWillShowDetailView(card: Card) {
+        if let card = card as? CardHighlight {
+            card.buttonText = CardAction.fazerCheckin.rawValue
+        }
+    }
+
+    func cardWillCloseDetailView(card: Card) {
+        if let card = card as? CardHighlight {
+            card.buttonText = CardAction.compartilhar.rawValue
+        }
     }
 
 }
