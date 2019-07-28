@@ -11,7 +11,7 @@ import Foundation
 protocol EventsServiceProtocol {
 
     func getEvents(completion: @escaping ([Event]) -> Void)
-    func checkinPerson(eventId: Int,
+    func checkinPerson(eventId: String,
                        personName: String,
                        personEmail: String,
                        completion: @escaping (Bool) -> Void)
@@ -41,7 +41,7 @@ class EventsService: EventsServiceProtocol {
         }
     }
 
-    func checkinPerson(eventId: Int,
+    func checkinPerson(eventId: String,
                        personName: String,
                        personEmail: String,
                        completion: @escaping (Bool) -> Void) {

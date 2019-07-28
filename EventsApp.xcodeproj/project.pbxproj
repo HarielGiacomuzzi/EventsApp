@@ -16,7 +16,6 @@
 		DB36B2B122ECAE430088EEA5 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2B022ECAE430088EEA5 /* Event.swift */; };
 		DB36B2B322ECAF5A0088EEA5 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2B222ECAF5A0088EEA5 /* Person.swift */; };
 		DB36B2B522ECAFAD0088EEA5 /* Cupom.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2B422ECAFAD0088EEA5 /* Cupom.swift */; };
-		DB36B2B722ECB06C0088EEA5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB36B2B622ECB06C0088EEA5 /* Default-568h@2x.png */; };
 		DB36B2B922ECB6EB0088EEA5 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2B822ECB6EB0088EEA5 /* EventsService.swift */; };
 		DB36B2BC22ECB8C00088EEA5 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB36B2BB22ECB8C00088EEA5 /* EventsViewModel.swift */; };
 		DB36B2BF22ECC1E60088EEA5 /* EventCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB36B2BE22ECC1E60088EEA5 /* EventCard.xib */; };
@@ -28,6 +27,8 @@
 		DB6BA0FD22ECA62F0020C2EB /* EventsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BA0FC22ECA62F0020C2EB /* EventsAppTests.swift */; };
 		DB6BA10822ECA62F0020C2EB /* EventsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BA10722ECA62F0020C2EB /* EventsAppUITests.swift */; };
 		DB6BA11722ECA9840020C2EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB6BA11622ECA9840020C2EB /* LaunchScreen.storyboard */; };
+		DB94BC7322EDE54D00495211 /* CardHighlight+Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB94BC7222EDE54D00495211 /* CardHighlight+Event.swift */; };
+		DB94BC7622EDEB4400495211 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB94BC7822EDEB4400495211 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +64,6 @@
 		DB36B2B022ECAE430088EEA5 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DB36B2B222ECAF5A0088EEA5 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		DB36B2B422ECAFAD0088EEA5 /* Cupom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cupom.swift; sourceTree = "<group>"; };
-		DB36B2B622ECB06C0088EEA5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DB36B2B822ECB6EB0088EEA5 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		DB36B2BB22ECB8C00088EEA5 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		DB36B2BE22ECC1E60088EEA5 /* EventCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCard.xib; sourceTree = "<group>"; };
@@ -81,6 +81,9 @@
 		DB6BA10722ECA62F0020C2EB /* EventsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsAppUITests.swift; sourceTree = "<group>"; };
 		DB6BA10922ECA62F0020C2EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB6BA11622ECA9840020C2EB /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DB94BC7222EDE54D00495211 /* CardHighlight+Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CardHighlight+Event.swift"; sourceTree = "<group>"; };
+		DB94BC7922EDEC3300495211 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		DB94BC7A22EDECD700495211 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,7 @@
 				DB6BA0F322ECA62F0020C2EB /* Info.plist */,
 				DB6BA11622ECA9840020C2EB /* LaunchScreen.storyboard */,
 				DB36B2A522ECAA6E0088EEA5 /* MainStoryboard.storyboard */,
+				DB94BC7822EDEB4400495211 /* Localizable.strings */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -188,7 +192,6 @@
 		DB6BA0DB22ECA62D0020C2EB = {
 			isa = PBXGroup;
 			children = (
-				DB36B2B622ECB06C0088EEA5 /* Default-568h@2x.png */,
 				DB6BA0E622ECA62D0020C2EB /* EventsApp */,
 				DB6BA0FB22ECA62F0020C2EB /* EventsAppTests */,
 				DB6BA10622ECA62F0020C2EB /* EventsAppUITests */,
@@ -211,6 +214,7 @@
 		DB6BA0E622ECA62D0020C2EB /* EventsApp */ = {
 			isa = PBXGroup;
 			children = (
+				DB94BC7122EDE53000495211 /* Extensions */,
 				DB36B2BD22ECB9B40088EEA5 /* View */,
 				DB36B2BA22ECB8A90088EEA5 /* ViewModel */,
 				DB36B2AF22ECAE370088EEA5 /* Model */,
@@ -239,6 +243,14 @@
 				DB6BA10922ECA62F0020C2EB /* Info.plist */,
 			);
 			path = EventsAppUITests;
+			sourceTree = "<group>";
+		};
+		DB94BC7122EDE53000495211 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DB94BC7222EDE54D00495211 /* CardHighlight+Event.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EC63894BAFB3BD48FB10104D /* Pods */ = {
@@ -343,8 +355,9 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"pt-BR",
+				en,
 			);
 			mainGroup = DB6BA0DB22ECA62D0020C2EB;
 			productRefGroup = DB6BA0E522ECA62D0020C2EB /* Products */;
@@ -364,7 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB36B2A622ECAA6E0088EEA5 /* MainStoryboard.storyboard in Resources */,
-				DB36B2B722ECB06C0088EEA5 /* Default-568h@2x.png in Resources */,
+				DB94BC7622EDEB4400495211 /* Localizable.strings in Resources */,
 				DB6BA11722ECA9840020C2EB /* LaunchScreen.storyboard in Resources */,
 				DB6BA0EF22ECA62F0020C2EB /* Assets.xcassets in Resources */,
 				DB36B2BF22ECC1E60088EEA5 /* EventCard.xib in Resources */,
@@ -498,6 +511,7 @@
 				DB36B2B322ECAF5A0088EEA5 /* Person.swift in Sources */,
 				DB6BA0EA22ECA62D0020C2EB /* EventsViewController.swift in Sources */,
 				DB36B2B522ECAFAD0088EEA5 /* Cupom.swift in Sources */,
+				DB94BC7322EDE54D00495211 /* CardHighlight+Event.swift in Sources */,
 				DB6BA0E822ECA62D0020C2EB /* AppDelegate.swift in Sources */,
 				DB36B2B922ECB6EB0088EEA5 /* EventsService.swift in Sources */,
 				DB36B2AD22ECAD070088EEA5 /* Servers.swift in Sources */,
@@ -540,11 +554,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		DB94BC7822EDEB4400495211 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB94BC7922EDEC3300495211 /* pt-BR */,
+				DB94BC7A22EDECD700495211 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		DB6BA10A22ECA62F0020C2EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -606,6 +633,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

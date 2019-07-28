@@ -1,0 +1,10 @@
+/* 
+  pt-br.strings
+  EventsApp
+
+  Created by Hariel Giacomuzzi on 28/07/19.
+  Copyright © 2019 Giacomuzzi. All rights reserved.
+*/
+
+"price" = "Preço";
+"when" = "Quando";

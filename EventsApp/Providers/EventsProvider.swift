@@ -12,7 +12,7 @@ import Alamofire
 protocol EventsProviderProtocol {
 
     func fetchEvents(completion: @escaping (Data) -> Void)
-    func checkinInEvent(eventId: Int,
+    func checkinInEvent(eventId: String,
                         personName: String,
                         personEmail: String,
                         completion: @escaping (Bool) -> Void)
@@ -20,7 +20,7 @@ protocol EventsProviderProtocol {
 
 class EventsProvider: EventsProviderProtocol {
 
-    func checkinInEvent(eventId: Int,
+    func checkinInEvent(eventId: String,
                         personName: String,
                         personEmail: String,
                         completion: @escaping (Bool) -> Void) {

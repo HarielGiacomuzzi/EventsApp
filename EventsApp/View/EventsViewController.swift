@@ -17,63 +17,35 @@ private struct K {
     static let CardHeight = CGFloat(280.0)
 }
 
-private enum CardAction: String {
-    case fazerCheckin = "Fazer check-in"
-    case compartilhar = "Compartilhar"
-}
-
 class EventsViewController: UIViewController {
     @IBOutlet var scrollVIew: UIScrollView!
 
     var viewModel: EventsViewModel?
-    private var defaultDateFormat: DateFormatter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.viewModel = EventsViewModel(delegate: self)
         self.viewModel?.getEvents()
-
-        self.defaultDateFormat = DateFormatter()
-        self.defaultDateFormat.dateFormat = "dd MMM"
     }
 
-    private func configureCardView(imageURL: String, frame: CGRect, event: Event) {
+    private func configureCardView(frame: CGRect,
+                                   event: Event,
+                                   index: Int) {
 
         let card = CardHighlight(
             frame: frame
         )
 
-        card.backgroundColor = UIColor.gray
-        card.title = event.title ?? ""
-        card.itemTitle = "Quando: \(defaultDateFormat.string(from: event.date ?? Date()))"
-        card.itemSubtitle = "Preço: \(event.price ?? 0.0)"
-        card.textColor = UIColor.black
-        card.buttonText = CardAction.compartilhar.rawValue
-        card.backgroundImage = #imageLiteral(resourceName: "placeHolder")
-        card.hasParallax = true
+        viewModel?.configureEventCard(card: card, index: index)
         card.delegate = self
 
-        let cardContentVC = storyboard!.instantiateViewController(
+        let cardContentVC = storyboard?.instantiateViewController(
             withIdentifier: "CardContent"
-        ) as? DetailViewController
+            ) as? DetailViewController
 
         cardContentVC?.viewModel = DetailViewModel(event: event)
         card.shouldPresent(cardContentVC, from: self, fullscreen: false)
-
-        ImageLoader.request(with: imageURL, onCompletion: { (image, error, _) in
-            guard let img = image else {
-                debugPrint("""
-                    There's an error retrieving the image.
-                    Details: \(error!.localizedDescription)
-                    """)
-
-                return }
-            DispatchQueue.main.async {
-                card.backgroundImage = img
-                card.title = ""
-            }
-        })
 
         self.scrollVIew.addSubview(card)
     }
@@ -83,26 +55,27 @@ class EventsViewController: UIViewController {
 extension EventsViewController: EventsViewModelDelegate {
 
     func didFetchEvents() {
-        var totalHight = K.CardTopSpacing
+        var totalHeight = K.CardTopSpacing
 
         guard let viewModel = self.viewModel else { return }
         for index in 0...viewModel.getNumberOfRows() {
-            if let event = self.viewModel?.getRowData(for: index),
-               let imageURL = event.image {
+            if let event = self.viewModel?.getRowData(for: index) {
 
                 let frame = CGRect(
                     x: K.CardBorderSpacing,
-                    y: totalHight,
+                    y: totalHeight,
                     width: K.CardWidth,
                     height: K.CardHeight
                 )
 
-                self.configureCardView(imageURL: imageURL, frame: frame, event: event)
+                self.configureCardView(frame: frame,
+                                       event: event,
+                                       index: index)
 
-                totalHight += K.CardHeight + K.CardTopSpacing
+                totalHeight += K.CardHeight + K.CardTopSpacing
             }
         }
-        self.scrollVIew.contentSize.height = totalHight + K.CardTopSpacing
+        self.scrollVIew.contentSize.height = totalHeight + K.CardTopSpacing
     }
 }
 
@@ -111,9 +84,12 @@ extension EventsViewController: CardDelegate {
     func cardHighlightDidTapButton(card: CardHighlight, button: UIButton) {
         switch card.buttonText {
         case CardAction.fazerCheckin.rawValue:
-            debugPrint("Do Checking")
+            viewModel?.doCheckin(event: card.eventModel)
         default:
-            debugPrint("Compartilhar")
+            guard let viewModel = self.viewModel else { return }
+            let activityView = viewModel.getShareContextMenu(event: card.eventModel)
+            activityView.popoverPresentationController?.sourceView = self.view
+            self.present(activityView, animated: true, completion: nil)
         }
     }
 

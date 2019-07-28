@@ -39,7 +39,7 @@ class EventsAppTests: XCTestCase {
         let waitForCheckin = expectation(description: "Need to wait until checking is done")
         waitForCheckin.expectedFulfillmentCount = 1
 
-        self.eventsProvider.checkinInEvent(eventId: 1,
+        self.eventsProvider.checkinInEvent(eventId: "1",
                                            personName: "John Doe",
                                            personEmail: "a@b.com") {result in
             XCTAssertTrue(result)
